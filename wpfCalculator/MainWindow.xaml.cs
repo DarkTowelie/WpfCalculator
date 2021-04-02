@@ -76,7 +76,7 @@ namespace wpfCalculator
 
         void operClick(char oper)
         {
-            if (currentNumber == 1 || currentNumber == 3)
+            if ((currentNumber == 1 || currentNumber == 3) && tb_Result.Text != "")
             {
                 num1 = convertToNum(tb_Result.Text);
                 this.oper = oper;
@@ -87,26 +87,29 @@ namespace wpfCalculator
 
         void getResult()
         {
-            currentNumber = 3;
-            num2 = convertToNum(tb_Result.Text);
-
-            switch (oper)
+            if (tb_Result.Text != "")
             {
-                case ('+'):
-                    tb_Result.Text = Convert.ToString(num1 + num2);
-                    break;
-                case ('-'):
-                    tb_Result.Text = Convert.ToString(num1 - num2);
-                    break;
-                case ('/'):
-                    tb_Result.Text = Convert.ToString(Math.Round(num1 / num2, 5));
-                    break;
-                case ('*'):
-                    tb_Result.Text = Convert.ToString(num1 * num2);
-                    break;
-                case ('%'):
-                    tb_Result.Text = Convert.ToString(num2 / 100);
-                    break;
+                currentNumber = 3;
+                num2 = convertToNum(tb_Result.Text);
+
+                switch (oper)
+                {
+                    case ('+'):
+                        tb_Result.Text = Convert.ToString(num1 + num2);
+                        break;
+                    case ('-'):
+                        tb_Result.Text = Convert.ToString(num1 - num2);
+                        break;
+                    case ('/'):
+                        tb_Result.Text = Convert.ToString(Math.Round(num1 / num2, 5));
+                        break;
+                    case ('*'):
+                        tb_Result.Text = Convert.ToString(num1 * num2);
+                        break;
+                    case ('%'):
+                        tb_Result.Text = Convert.ToString(num2 / 100);
+                        break;
+                }
             }
         }
 
